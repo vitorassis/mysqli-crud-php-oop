@@ -30,7 +30,7 @@ class Database{
 		if(!$this->con){
 			$this->myconn = new mysqli($this->db_host,$this->db_user,$this->db_pass,$this->db_name);  // mysql_connect() with variables defined at the start of Database class
             if($this->myconn->connect_errno > 0){
-                array_push($this->result,$myconn->connect_error);
+                array_push($this->result,$this->myconn->connect_error);
                 return false; // Problem selecting database return FALSE
             }else{
                 $this->con = true;
@@ -46,7 +46,7 @@ class Database{
     	// If there is a connection to the database
     	if($this->con){
     		// We have found a connection, try to close it
-    		if(@mysql_close()){
+    		if($this->myconn->close()){
     			// We have successfully closed the connection, set the connection variable to false
     			$this->con = false;
 				// Return true tjat we have closed the connection
@@ -107,7 +107,7 @@ class Database{
 		// Check to see if the table exists
         if($this->tableExists($table)){
         	// The table exists, run the query
-        	$query = $this->myconn->query($q);
+        	$query = $this->myconn->query($q);    
 			if($query){
 				// If the query returns >= 1 assign the number of rows to numResults
 				$this->numResults = $query->num_rows;
@@ -121,7 +121,7 @@ class Database{
                     		if($query->num_rows >= 1){
                     			$this->result[$i][$key[$x]] = $r[$key[$x]];
 							}else{
-								$this->result = null;
+								$this->result[$i][$key[$x]] = null;
 							}
 						}
 					}
