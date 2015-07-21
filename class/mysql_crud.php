@@ -161,7 +161,7 @@ class Database{
     	 if($this->tableExists($table)){
     	 	// The table exists check to see if we are deleting rows or table
     	 	if($where == null){
-                $delete = 'DELETE '.$table; // Create query to delete table
+                $delete = 'DROP TABLE '.$table; // Create query to delete table
             }else{
                 $delete = 'DELETE FROM '.$table.' WHERE '.$where; // Create query to delete rows
             }
