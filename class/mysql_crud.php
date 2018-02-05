@@ -11,7 +11,7 @@ class Database {
 	* means that they will only be available with the
 	* Database class
 	*/
-  private $db_host = "localhost";  // Change as required
+  	private $db_host = "localhost";  // Change as required
  	private $db_user = "user";  // Change as required
  	private $db_pass = "password";  // Change as required
  	private $db_name = "database";	// Change as required
@@ -20,10 +20,10 @@ class Database {
 	* Extra variables that are required by other function such as boolean con variable
 	*/
 	private $con = false; // Check to see if the connection is active
-  private $myconn = ""; // This will be our mysqli object
+  	private $myconn = ""; // This will be our mysqli object
 	private $result = array(); // Any results from a query will be stored here
-  private $myQuery = "";// used for debugging process with SQL return
-  private $numResults = "";// used for returning the number of rows
+  	private $myQuery = "";// used for debugging process with SQL return
+  	private $numResults = "";// used for returning the number of rows
 
 	// Function to make connection to database
 	public function connect() {
