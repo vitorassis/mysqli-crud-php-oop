@@ -12,9 +12,9 @@ class Database{
 	 * Database class
 	 */
 	private $db_host = "localhost";  // Change as required
-	private $db_user = "user";  // Change as required
-	private $db_pass = "password";  // Change as required
-	private $db_name = "database";	// Change as required
+	private $db_user = "root";  // Change as required
+	private $db_pass = "sqladmin";  // Change as required
+	private $db_name = "teste";	// Change as required
 	
 	/*
 	 * Extra variables that are required by other function such as boolean con variable
@@ -87,7 +87,7 @@ class Database{
 	}
 	
 	// Function to SELECT from the database
-	public function select($table, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
+	public function select($table, $rows = '*', $where = null, $order = null, $limit = null, $join = null){
 		// Create query from the variables passed to the function
 		$q = 'SELECT '.$rows.' FROM '.$table;
 		if($join != null){
@@ -101,7 +101,8 @@ class Database{
 		}
         if($limit != null){
             $q .= ' LIMIT '.$limit;
-        }
+		}
+		echo $q;
         // echo $table;
         $this->myQuery = $q; // Pass back the SQL
 		// Check to see if the table exists
